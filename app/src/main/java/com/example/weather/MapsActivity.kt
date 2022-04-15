@@ -7,9 +7,7 @@ import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import com.github.florent37.runtimepermission.kotlin.askPermission
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -18,7 +16,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.weather.databinding.ActivityMapsBinding
-import com.example.weather.livedata.MyLiveData
+import com.example.weather.livedata.MainViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
@@ -33,7 +31,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var latling2: LatLng
-    lateinit var myLiveData: MyLiveData
+    lateinit var myLiveData: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -87,19 +85,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         }
 
-//        mMap.setOnMarkerClickListener {
-//            val latLng = it.position
-//
-//
-//
-//
-//            Toast.makeText(this, "$latLng", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(this, MainActivity::class.java)
-//            intent.putExtra("lat", latLng.latitude)
-//            intent.putExtra("long", latLng.longitude)
-//            startActivity(intent)
-//            true
-//        }
 
 
        
@@ -129,11 +114,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                         ), 17.0f
                                     )
                                 )
-                                Toast.makeText(this, "Location aniqlandi", Toast.LENGTH_SHORT).show()
+
                             }
                         })
                     .addOnFailureListener{
-                        Toast.makeText(this, "Location aniqlab bo'lmadi", Toast.LENGTH_SHORT).show()
+
                     }
 
 
